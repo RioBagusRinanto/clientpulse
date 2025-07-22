@@ -8,7 +8,6 @@ import {
   Bell, 
   Shield, 
   Palette,
-  Mail,
   Save,
   Trash2
 } from 'lucide-react';
