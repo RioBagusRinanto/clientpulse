@@ -7,7 +7,6 @@ import {
   Plus, 
   Search, 
   Mail, 
-  Phone, 
   Building,
   MoreVertical,
   Edit,

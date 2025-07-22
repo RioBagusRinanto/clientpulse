@@ -2,14 +2,11 @@ import React, { useState } from 'react';
 import { DashboardLayout } from '../components/layout/DashboardLayout';
 import { Card, CardContent } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
-import { Input } from '../components/ui/Input';
 import { 
   Send, 
   Search, 
   Paperclip,
-  User,
   MessageCircle,
-  Clock,
   CheckCircle2
 } from 'lucide-react';
 import { useLocalStorage } from '../hooks/useLocalStorage';

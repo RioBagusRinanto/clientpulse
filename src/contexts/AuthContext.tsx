@@ -39,19 +39,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setLoading(true);
     try {
       // Mock login - replace with actual API call
-      const mockUser: User = {
-        id: '1',
-        email,
-        name: 'John Doe',
-        plan: email.includes('admin') ? 'enterprise' : 'free',
-        role: email.includes('admin') ? 'admin' : 'user',
-        createdAt: new Date().toISOString(),
-      };
-      
+      const storedUserData = localStorage.getItem('user_data');
+      const storedPassword = localStorage.getItem('user_password');
+      if (!storedUserData || !storedPassword) {
+        throw new Error('No user found');
+      }
+      const userObj = JSON.parse(storedUserData);
+      if (userObj.email !== email || storedPassword !== password) {
+        throw new Error('Invalid email or password');
+      }
       localStorage.setItem('auth_token', 'mock-token');
-      localStorage.setItem('user_data', JSON.stringify(mockUser));
-      setUser(mockUser);
-    } catch (error) {
+      setUser(userObj);
+    } catch {
       throw new Error('Login failed');
     } finally {
       setLoading(false);
@@ -70,11 +69,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         role: 'user',
         createdAt: new Date().toISOString(),
       };
-      
       localStorage.setItem('auth_token', 'mock-token');
       localStorage.setItem('user_data', JSON.stringify(mockUser));
+      localStorage.setItem('user_password', password);
       setUser(mockUser);
-    } catch (error) {
+    } catch {
       throw new Error('Signup failed');
     } finally {
       setLoading(false);

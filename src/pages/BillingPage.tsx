@@ -3,11 +3,9 @@ import { DashboardLayout } from '../components/layout/DashboardLayout';
 import { Card, CardContent, CardHeader } from '../components/ui/Card';
 import { Button } from '../components/ui/Button';
 import { 
-  CreditCard, 
   Check, 
   Download,
   Calendar,
-  DollarSign,
   Users,
   Zap
 } from 'lucide-react';
